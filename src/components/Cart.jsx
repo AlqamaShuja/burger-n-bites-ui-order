@@ -22,7 +22,7 @@ export default function Cart() {
         ? Math.round(item.price - (item.price * item.discount) / 100)
         : Math.round(item.price);
       const itemTotal = unitPrice * item.quantity;
-      lines.push(`- ${item.name} x ${item.quantity} = Rs ${itemTotal}`);
+      lines.push(`- ${item.name} x ${item.quantity}`);
     });
 
     lines.push('');
