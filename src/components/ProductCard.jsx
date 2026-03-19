@@ -23,7 +23,7 @@ export default function ProductCard({ product, index }) {
       exit={{ opacity: 0, y: -20 }}
       transition={{ duration: 0.4, delay: index * 0.05 }}
       whileHover={{ y: -4 }}
-      className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-shadow duration-300 flex flex-col group"
+      className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-shadow duration-300 flex flex-col group border border-gray-100"
     >
       {/* Image */}
       <div className="relative overflow-hidden aspect-[4/3]">
@@ -39,20 +39,20 @@ export default function ProductCard({ product, index }) {
           <motion.div
             initial={{ scale: 0 }}
             animate={{ scale: 1 }}
-            className="absolute top-3 left-3 bg-red-500 text-white text-xs font-bold px-2.5 py-1 rounded-full shadow-lg"
+            className="absolute top-3 left-3 bg-yellow-400 text-black text-xs font-bold px-2.5 py-1 rounded-full shadow-lg"
           >
             -{product.discount}%
           </motion.div>
         )}
 
         {/* Category badge */}
-        <div className="absolute top-3 right-3 bg-white/90 backdrop-blur-sm text-gray-700 text-xs font-medium px-2.5 py-1 rounded-full">
+        <div className="absolute top-3 right-3 bg-black/70 backdrop-blur-sm text-white text-xs font-medium px-2.5 py-1 rounded-full">
           {product.category?.name}
         </div>
 
         {/* Out of stock overlay */}
         {isOutOfStock && (
-          <div className="absolute inset-0 bg-black/50 flex items-center justify-center">
+          <div className="absolute inset-0 bg-black/60 flex items-center justify-center">
             <span className="bg-white text-gray-800 font-bold px-4 py-2 rounded-full text-sm">
               Out of Stock
             </span>
@@ -92,7 +92,7 @@ export default function ProductCard({ product, index }) {
                 <motion.div
                   initial={{ scale: 0.8 }}
                   animate={{ scale: 1 }}
-                  className="flex items-center gap-1 bg-orange-50 rounded-full px-1 py-1"
+                  className="flex items-center gap-1 bg-gray-900 rounded-full px-1 py-1"
                 >
                   <button
                     onClick={() =>
@@ -100,16 +100,16 @@ export default function ProductCard({ product, index }) {
                         ? removeFromCart(product.id, product.name)
                         : updateQuantity(product.id, cartItem.quantity - 1)
                     }
-                    className="w-8 h-8 rounded-full bg-white text-orange-500 flex items-center justify-center shadow-sm hover:bg-orange-100 transition-colors cursor-pointer"
+                    className="w-8 h-8 rounded-full bg-gray-700 text-yellow-400 flex items-center justify-center hover:bg-gray-600 transition-colors cursor-pointer"
                   >
                     <FiMinus size={14} />
                   </button>
-                  <span className="w-8 text-center font-bold text-gray-900 text-sm">
+                  <span className="w-8 text-center font-bold text-white text-sm">
                     {cartItem.quantity}
                   </span>
                   <button
                     onClick={() => addToCart(product)}
-                    className="w-8 h-8 rounded-full bg-gradient-to-r from-orange-500 to-red-500 text-white flex items-center justify-center shadow-sm hover:shadow-md transition-shadow cursor-pointer"
+                    className="w-8 h-8 rounded-full bg-yellow-400 text-black flex items-center justify-center hover:bg-yellow-300 transition-colors cursor-pointer"
                   >
                     <FiPlus size={14} />
                   </button>
@@ -119,7 +119,7 @@ export default function ProductCard({ product, index }) {
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.9 }}
                   onClick={() => addToCart(product)}
-                  className="w-11 h-11 rounded-full bg-gradient-to-r from-orange-500 to-red-500 text-white flex items-center justify-center shadow-lg shadow-orange-200 hover:shadow-xl transition-shadow cursor-pointer"
+                  className="w-11 h-11 rounded-full bg-yellow-400 text-black flex items-center justify-center shadow-lg shadow-yellow-400/20 hover:bg-yellow-300 hover:shadow-xl transition-all cursor-pointer"
                 >
                   <FiShoppingBag size={18} />
                 </motion.button>

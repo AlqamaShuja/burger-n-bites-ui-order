@@ -21,7 +21,7 @@ createRoot(document.getElementById('root')).render(
             padding: '12px 16px',
           },
           success: {
-            iconTheme: { primary: '#f97316', secondary: '#fff' },
+            iconTheme: { primary: '#facc15', secondary: '#000' },
           },
           error: {
             iconTheme: { primary: '#ef4444', secondary: '#fff' },

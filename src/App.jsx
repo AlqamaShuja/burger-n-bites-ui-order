@@ -129,8 +129,8 @@ function App() {
       </main>
 
       {/* Footer */}
-      <footer className="text-center py-6 text-gray-400 text-xs sm:text-sm border-t border-gray-100 bg-white mt-8">
-        <p>Burger & Bites &mdash; Made with love</p>
+      <footer className="text-center py-6 text-gray-400 text-xs sm:text-sm border-t border-gray-800 bg-black mt-8">
+        <p>Burger & Bites &mdash; Made with <span className="text-yellow-400">love</span></p>
       </footer>
     </div>
   );

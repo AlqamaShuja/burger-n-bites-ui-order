@@ -10,7 +10,7 @@ export default function CategoryFilter({ categories, activeCategory, onSelect })
         onClick={() => onSelect(null)}
         className={`flex-shrink-0 px-4 sm:px-6 py-2 sm:py-2.5 rounded-full text-sm font-semibold transition-all cursor-pointer ${
           activeCategory === null
-            ? 'bg-gradient-to-r from-orange-500 to-red-500 text-white shadow-lg shadow-orange-200'
+            ? 'bg-yellow-400 text-black shadow-lg shadow-yellow-400/20'
             : 'bg-white text-gray-600 hover:bg-gray-50 border border-gray-200'
         }`}
       >
@@ -25,7 +25,7 @@ export default function CategoryFilter({ categories, activeCategory, onSelect })
           onClick={() => onSelect(category.id)}
           className={`flex-shrink-0 px-4 sm:px-6 py-2 sm:py-2.5 rounded-full text-sm font-semibold transition-all cursor-pointer ${
             activeCategory === category.id
-              ? 'bg-gradient-to-r from-orange-500 to-red-500 text-white shadow-lg shadow-orange-200'
+              ? 'bg-yellow-400 text-black shadow-lg shadow-yellow-400/20'
               : 'bg-white text-gray-600 hover:bg-gray-50 border border-gray-200'
           }`}
         >

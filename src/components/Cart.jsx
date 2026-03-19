@@ -40,7 +40,7 @@ export default function Cart() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={() => setIsCartOpen(false)}
-            className="fixed inset-0 bg-black/40 backdrop-blur-sm z-50"
+            className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50"
           />
 
           {/* Cart Panel */}
@@ -52,13 +52,13 @@ export default function Cart() {
             className="fixed right-0 top-0 h-full w-full sm:w-[420px] bg-white z-50 shadow-2xl flex flex-col"
           >
             {/* Header */}
-            <div className="flex items-center justify-between p-5 border-b border-gray-100">
+            <div className="flex items-center justify-between p-5 border-b border-gray-100 bg-black">
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 bg-orange-100 rounded-full flex items-center justify-center">
-                  <FiShoppingBag className="text-orange-500" size={20} />
+                <div className="w-10 h-10 bg-yellow-400 rounded-full flex items-center justify-center">
+                  <FiShoppingBag className="text-black" size={20} />
                 </div>
                 <div>
-                  <h2 className="text-lg font-bold text-gray-900">Your Cart</h2>
+                  <h2 className="text-lg font-bold text-white">Your Cart</h2>
                   <p className="text-xs text-gray-400">
                     {items.length} {items.length === 1 ? 'item' : 'items'}
                   </p>
@@ -70,7 +70,7 @@ export default function Cart() {
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.9 }}
                     onClick={clearCart}
-                    className="w-10 h-10 rounded-full text-gray-400 hover:text-red-500 hover:bg-red-50 flex items-center justify-center transition-colors cursor-pointer"
+                    className="w-10 h-10 rounded-full text-gray-400 hover:text-red-400 hover:bg-white/10 flex items-center justify-center transition-colors cursor-pointer"
                     title="Clear cart"
                   >
                     <FiTrash2 size={18} />
@@ -80,7 +80,7 @@ export default function Cart() {
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.9 }}
                   onClick={() => setIsCartOpen(false)}
-                  className="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center hover:bg-gray-200 transition-colors cursor-pointer"
+                  className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 transition-colors cursor-pointer text-white"
                 >
                   <FiX size={20} />
                 </motion.button>
@@ -135,7 +135,7 @@ export default function Cart() {
                   className="w-full bg-gradient-to-r from-green-500 to-green-600 text-white py-4 rounded-2xl font-bold text-base flex items-center justify-center gap-3 shadow-lg shadow-green-200 hover:shadow-xl hover:shadow-green-300 transition-shadow cursor-pointer"
                 >
                   <FaWhatsapp size={22} />
-                  Place Order via WhatsApp
+                  Click to Place Order via WhatsApp
                 </motion.button>
               </motion.div>
             )}

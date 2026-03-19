@@ -46,29 +46,29 @@ export default function CartItem({ item }) {
           </motion.button>
         </div>
 
-        <p className="text-orange-500 font-bold text-sm mt-0.5">
+        <p className="text-yellow-600 font-bold text-sm mt-0.5">
           Rs {Math.round(discountedPrice)}
         </p>
 
         <div className="flex items-center justify-between mt-2">
           {/* Quantity controls */}
-          <div className="flex items-center gap-1 bg-white rounded-full px-1 py-0.5 shadow-sm">
+          <div className="flex items-center gap-1 bg-black rounded-full px-1 py-0.5">
             <button
               onClick={() =>
                 item.quantity === 1
                   ? removeFromCart(item.id, item.name)
                   : updateQuantity(item.id, item.quantity - 1)
               }
-              className="w-7 h-7 rounded-full text-gray-500 flex items-center justify-center hover:bg-gray-100 transition-colors cursor-pointer"
+              className="w-7 h-7 rounded-full text-yellow-400 flex items-center justify-center hover:bg-white/10 transition-colors cursor-pointer"
             >
               <FiMinus size={12} />
             </button>
-            <span className="w-6 text-center font-bold text-gray-900 text-xs">
+            <span className="w-6 text-center font-bold text-white text-xs">
               {item.quantity}
             </span>
             <button
               onClick={() => updateQuantity(item.id, item.quantity + 1)}
-              className="w-7 h-7 rounded-full text-orange-500 flex items-center justify-center hover:bg-orange-50 transition-colors cursor-pointer"
+              className="w-7 h-7 rounded-full text-black bg-yellow-400 flex items-center justify-center hover:bg-yellow-300 transition-colors cursor-pointer"
             >
               <FiPlus size={12} />
             </button>
