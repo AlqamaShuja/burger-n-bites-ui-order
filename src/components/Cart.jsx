@@ -22,16 +22,18 @@ export default function Cart() {
         ? Math.round(item.price - (item.price * item.discount) / 100)
         : Math.round(item.price);
       const itemTotal = unitPrice * item.quantity;
-      lines.push(`- ${item.name} x ${item.quantity}`);
+      // Clean product name of any special chars WhatsApp may interpret
+      const cleanName = item.name.replace(/[*_~`]/g, '');
+      lines.push('- ' + cleanName + ' x ' + item.quantity + ' = Rs ' + itemTotal);
     });
 
     lines.push('');
-    lines.push(`Total: Rs ${Math.round(totalPrice)}`);
+    lines.push('Total: Rs ' + Math.round(totalPrice));
     lines.push('');
     lines.push('Please confirm my order. Thank you!');
 
     const message = lines.join('\n');
-    const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+    const url = 'https://wa.me/' + WHATSAPP_NUMBER + '?text=' + encodeURIComponent(message);
     window.open(url, '_blank');
   };
 
