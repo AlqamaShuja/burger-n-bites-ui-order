@@ -13,21 +13,26 @@ export default function Cart() {
   const handlePlaceOrder = () => {
     if (items.length === 0) return;
 
-    let message = '*Order Details:*\n\n';
+    const lines = [];
+    lines.push('Order Details:');
+    lines.push('');
 
     items.forEach((item) => {
-      const discountedPrice = item.discount
-        ? item.price - (item.price * item.discount) / 100
-        : item.price;
-      const itemTotal = Math.round(discountedPrice * item.quantity);
-      message += `- ${item.name} x${item.quantity} = Rs ${itemTotal}\n`;
+      const unitPrice = item.discount
+        ? Math.round(item.price - (item.price * item.discount) / 100)
+        : Math.round(item.price);
+      const itemTotal = unitPrice * item.quantity;
+      lines.push(`- ${item.name} x ${item.quantity} = Rs ${itemTotal}`);
     });
 
-    message += `\n*Total: Rs ${Math.round(totalPrice)}*`;
-    message += '\n\nPlease confirm my order. Thank you!';
+    lines.push('');
+    lines.push(`Total: Rs ${Math.round(totalPrice)}`);
+    lines.push('');
+    lines.push('Please confirm my order. Thank you!');
 
-    const encoded = encodeURIComponent(message);
-    window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encoded}`, '_blank');
+    const message = lines.join('\n');
+    const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+    window.open(url, '_blank');
   };
 
   return (
