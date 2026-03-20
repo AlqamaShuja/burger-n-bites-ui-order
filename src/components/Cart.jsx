@@ -36,7 +36,7 @@ export default function Cart() {
     const url = 'https://wa.me/' + WHATSAPP_NUMBER + '?text=' + encodeURIComponent(message);
     window.open(url, '_blank');
   };
-
+  
   return (
     <AnimatePresence>
       {isCartOpen && (
