@@ -32,6 +32,12 @@ export default function ProductCard({ product, index }) {
           alt={product.name}
           className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
           loading="lazy"
+          onError={(e) => {
+            // Broken/deleted image URL → fall back to the placeholder
+            if (e.currentTarget.src !== PLACEHOLDER_IMG) {
+              e.currentTarget.src = PLACEHOLDER_IMG;
+            }
+          }}
         />
 
         {/* Discount badge */}

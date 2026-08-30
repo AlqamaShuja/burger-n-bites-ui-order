@@ -28,6 +28,12 @@ export default function CartItem({ item }) {
         src={item.imageUrl || PLACEHOLDER_IMG}
         alt={item.name}
         className="w-16 h-16 sm:w-20 sm:h-20 object-cover rounded-xl flex-shrink-0"
+        onError={(e) => {
+          // Broken/deleted image URL → fall back to the placeholder
+          if (e.currentTarget.src !== PLACEHOLDER_IMG) {
+            e.currentTarget.src = PLACEHOLDER_IMG;
+          }
+        }}
       />
 
       {/* Details */}

@@ -1,7 +1,12 @@
 import { motion } from 'framer-motion';
-import { FiShoppingCart } from 'react-icons/fi';
+import { FiShoppingCart, FiPhone } from 'react-icons/fi';
 import { useCart } from '../context/CartContext';
 import logo from '../assets/Lpgo_page-0001.png';
+
+// Same number the WhatsApp order goes to, shown as a tappable call link.
+// Env may store it with or without "+" — normalize to +923... for display/dial.
+const PHONE_DIGITS = (import.meta.env.VITE_WHATSAPP_NUMBER || '').replace(/\D/g, '');
+const DISPLAY_PHONE = PHONE_DIGITS ? `+${PHONE_DIGITS}` : null;
 
 export default function Header() {
   const { totalItems, setIsCartOpen } = useCart();
@@ -35,6 +40,23 @@ export default function Header() {
             </div>
           </motion.div>
 
+          <div className="flex items-center gap-2 sm:gap-4">
+          {/* Call link — tap to dial the shop */}
+          {DISPLAY_PHONE && (
+            <motion.a
+              href={`tel:${DISPLAY_PHONE}`}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="flex items-center gap-2 text-yellow-400 hover:text-yellow-300 transition-colors font-semibold text-sm"
+              title={`Call ${DISPLAY_PHONE}`}
+            >
+              <span className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-yellow-400/10 border border-yellow-400/30 flex items-center justify-center">
+                <FiPhone className="text-base" />
+              </span>
+              <span className="hidden sm:inline">{DISPLAY_PHONE}</span>
+            </motion.a>
+          )}
+
           {/* Cart Button */}
           <motion.button
             whileHover={{ scale: 1.05 }}
@@ -55,6 +77,7 @@ export default function Header() {
               </motion.span>
             )}
           </motion.button>
+          </div>
         </div>
       </div>
     </motion.header>
